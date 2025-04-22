@@ -52,6 +52,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+                bizmap: {
+                    50: '#e6f8fa',
+                    100: '#cdf1f5',
+                    200: '#9ae3ea',
+                    300: '#67d5df',
+                    400: '#34c7d4',
+                    500: '#1eb8c8',
+                    600: '#1794a0',
+                    700: '#126f78',
+                    800: '#0c4a50',
+                    900: '#062528',
+                },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
