@@ -9,6 +9,7 @@ import { toast } from "@/components/ui/use-toast";
 export const N8nSetupGuide = () => {
   const [webhookUrl, setWebhookUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [testLoading, setTestLoading] = useState(false);
   
   const handleConnect = () => {
     if (!webhookUrl || !webhookUrl.includes("webhook")) {
@@ -30,6 +31,28 @@ export const N8nSetupGuide = () => {
         description: "n8n webhook bağlantısı başarıyla kuruldu",
       });
     }, 1500);
+  };
+  
+  const handleTestData = () => {
+    if (!webhookUrl) {
+      toast({
+        title: "Hata",
+        description: "Test verisi göndermek için önce webhook URL'si girmelisiniz",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setTestLoading(true);
+    
+    // Simulated test data sending
+    setTimeout(() => {
+      setTestLoading(false);
+      toast({
+        title: "Test Verisi Gönderildi",
+        description: "Örnek işletme verisi n8n iş akışına başarıyla gönderildi",
+      });
+    }, 2000);
   };
   
   return (
@@ -115,8 +138,13 @@ export const N8nSetupGuide = () => {
             <p className="text-sm text-muted-foreground mb-2">
               Webhook bağlantısı kurulduktan sonra test verilerle bir deneme yaparak sistemin doğru çalıştığını kontrol edin.
             </p>
-            <Button variant="outline" className="text-sm">
-              Test Verisi Gönder
+            <Button 
+              variant="outline" 
+              className="text-sm"
+              onClick={handleTestData}
+              disabled={testLoading}
+            >
+              {testLoading ? "Gönderiliyor..." : "Test Verisi Gönder"}
             </Button>
           </div>
         </div>
